@@ -7,23 +7,23 @@ import plyer.platforms.win.notification
 from plyer import notification
 import dotenv
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver import Chrome, ChromeOptions
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver import Edge, EdgeOptions
+from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from subprocess import CREATE_NO_WINDOW, Popen
 
 dotenv.load_dotenv()
 
 ### OPEN BROWSER ###
 
-options = ChromeOptions()
+options = EdgeOptions()
 options.add_argument('--headless')
-service = Service(ChromeDriverManager().install())
+service = Service(EdgeChromiumDriverManager().install())
 service.creationflags = CREATE_NO_WINDOW
-driver = Chrome(service=service, options=options)
+driver = Edge(service=service, options=options)
 driver.headless = True
 driver.get(r"https://teveclub.hu/")
 
